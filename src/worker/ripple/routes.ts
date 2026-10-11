@@ -244,7 +244,7 @@ app.post("/auth/logout", async (c) => {
 
 app.get("/me", async (c) => {
 	const user = c.get("user");
-	if (!user) return c.json({ user: null });
+	if (!user) return c.json({ user: null, memberships: [], invites: [], unread: 0, notificationsPaused: false });
 	const db = c.env.DB;
 	const [memberships, invites, unread, pref] = await Promise.all([
 		db
