@@ -1,0 +1,506 @@
+/* Ripple uses the MyGriefGuide teal on a warm paper background. Everything is
+   scoped under .ripple so the games' global styles don't leak in. */
+.ripple {
+	--rp-brand: #2a7f6f;
+	--rp-brand-dark: #1d5c50;
+	--rp-brand-quiet: #e8f3f1;
+	--rp-brand-border: #bfe0d8;
+	--rp-paper: #faf8f4;
+	--rp-card: #ffffff;
+	--rp-text: #24312e;
+	--rp-quiet: #5d6b67;
+	--rp-border: #e4dfd6;
+	--rp-danger: #9a3b2e;
+
+	position: fixed;
+	inset: 0;
+	overflow-y: auto;
+	box-sizing: border-box;
+	padding: 1rem 1rem 3rem;
+	background: var(--rp-paper);
+	color: var(--rp-text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 1.0625rem;
+	line-height: 1.55;
+	color-scheme: light;
+}
+
+.ripple > * {
+	max-width: 40rem;
+	margin-inline: auto;
+}
+
+.ripple *,
+.ripple *::before {
+	box-sizing: border-box;
+}
+
+.ripple h1,
+.ripple h2,
+.ripple h3,
+.ripple p,
+.ripple ul,
+.ripple dl,
+.ripple fieldset {
+	margin: 0;
+}
+
+.ripple h1 {
+	font-size: clamp(1.6rem, 5vw, 2.1rem);
+	line-height: 1.2;
+	font-weight: 650;
+	text-wrap: balance;
+}
+
+.ripple h2 {
+	font-size: 1.3rem;
+	line-height: 1.3;
+	font-weight: 650;
+}
+
+.ripple h3 {
+	font-size: 1.05rem;
+	font-weight: 600;
+}
+
+.ripple a {
+	color: var(--rp-brand-dark);
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+.rp-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1.25rem;
+}
+
+.ripple a.rp-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--rp-brand-dark);
+	font-size: 1.3rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.rp-by {
+	display: none;
+	color: var(--rp-quiet);
+	font-size: 0.8rem;
+	font-weight: 400;
+}
+
+.rp-header .rp-row {
+	flex-wrap: nowrap;
+	gap: 1rem;
+}
+
+@media (min-width: 480px) {
+	.rp-by {
+		display: inline;
+	}
+}
+
+/* Concentric rings: a ripple. */
+.rp-mark {
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	background: radial-gradient(circle, var(--rp-brand) 0 22%, transparent 23% 42%, var(--rp-brand) 43% 54%, transparent 55% 78%, var(--rp-brand-border) 79% 100%);
+}
+
+.rp-hero {
+	padding: 1.5rem 0 1.75rem;
+	display: grid;
+	gap: 0.75rem;
+}
+
+.rp-hero p {
+	color: var(--rp-quiet);
+	font-size: 1.1rem;
+}
+
+.rp-card {
+	display: grid;
+	gap: 0.9rem;
+	margin-bottom: 1rem;
+	padding: 1.25rem;
+	background: var(--rp-card);
+	border: 1px solid var(--rp-border);
+	border-radius: 14px;
+	box-shadow: 0 1px 2px rgba(36, 49, 46, 0.04);
+}
+
+.rp-crisis {
+	border-color: var(--rp-brand);
+	border-width: 2px;
+	background: var(--rp-brand-quiet);
+}
+
+.rp-crisis ul {
+	padding-left: 1.2rem;
+	display: grid;
+	gap: 0.4rem;
+}
+
+.rp-item {
+	display: grid;
+	gap: 0.6rem;
+	padding-top: 0.9rem;
+	border-top: 1px solid var(--rp-border);
+}
+
+.rp-item:first-of-type {
+	padding-top: 0;
+	border-top: 0;
+}
+
+.rp-quiet {
+	color: var(--rp-quiet);
+	font-size: 0.95rem;
+	font-weight: 400;
+}
+
+.rp-block {
+	display: block;
+}
+
+.rp-center {
+	text-align: center;
+}
+
+.rp-label {
+	color: var(--rp-quiet);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.rp-quote {
+	padding: 0.8rem 1rem;
+	background: var(--rp-brand-quiet);
+	border-left: 3px solid var(--rp-brand);
+	border-radius: 0 10px 10px 0;
+}
+
+.rp-notice,
+.rp-banner {
+	margin-bottom: 1rem;
+	padding: 0.8rem 1rem;
+	border-radius: 10px;
+	background: var(--rp-brand-quiet);
+	border: 1px solid var(--rp-brand-border);
+	color: var(--rp-brand-dark);
+}
+
+.rp-card .rp-notice,
+.rp-card .rp-banner {
+	margin-bottom: 0;
+}
+
+.rp-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.rp-row > .rp-field {
+	flex: 1 1 8rem;
+}
+
+.rp-stack {
+	display: grid;
+	gap: 0.6rem;
+	justify-items: start;
+}
+
+.ripple .rp-btn {
+	min-height: 2.9rem;
+	padding: 0.6rem 1.1rem;
+	border: 1px solid var(--rp-brand-border);
+	border-radius: 10px;
+	background: var(--rp-card);
+	color: var(--rp-brand-dark);
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.15s;
+}
+
+.ripple .rp-btn:hover {
+	background: var(--rp-brand-quiet);
+	border-color: var(--rp-brand);
+}
+
+.ripple .rp-btn.rp-primary {
+	background: var(--rp-brand);
+	border-color: var(--rp-brand);
+	color: #fff;
+}
+
+.ripple .rp-btn.rp-primary:hover {
+	background: var(--rp-brand-dark);
+}
+
+.ripple .rp-btn.rp-danger {
+	border-color: #e5c9c3;
+	color: var(--rp-danger);
+}
+
+.ripple .rp-btn.rp-danger:hover {
+	background: #fbf1ef;
+	border-color: var(--rp-danger);
+}
+
+.ripple .rp-btn:disabled {
+	opacity: 0.55;
+	cursor: default;
+}
+
+.ripple .rp-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	min-height: 2.75rem;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--rp-brand-dark);
+	font: inherit;
+	font-weight: 600;
+	text-decoration: underline;
+	cursor: pointer;
+	justify-self: start;
+}
+
+.ripple :is(button, a, input, select, textarea):focus-visible {
+	outline: 3px solid var(--rp-brand);
+	outline-offset: 2px;
+}
+
+.rp-form {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.rp-form > .rp-btn {
+	justify-self: start;
+}
+
+.rp-field {
+	display: grid;
+	gap: 0.3rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+}
+
+.ripple :is(input:not([type="checkbox"], [type="radio"]), select, textarea) {
+	width: 100%;
+	min-height: 2.9rem;
+	padding: 0.6rem 0.75rem;
+	border: 1px solid #c9c4ba;
+	border-radius: 10px;
+	background: #fff;
+	color: var(--rp-text);
+	font: inherit;
+	font-weight: 400;
+}
+
+.rp-options {
+	display: grid;
+	gap: 0.5rem;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+
+.rp-options legend {
+	padding: 0;
+	margin-bottom: 0.5rem;
+	font-size: 1.1rem;
+	font-weight: 650;
+}
+
+.rp-option,
+.rp-check {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.7rem;
+	cursor: pointer;
+}
+
+.rp-option {
+	padding: 0.85rem 1rem;
+	border: 1px solid var(--rp-border);
+	border-radius: 12px;
+	background: #fff;
+}
+
+.rp-option-on {
+	border-color: var(--rp-brand);
+	background: var(--rp-brand-quiet);
+}
+
+.rp-check {
+	min-height: 2.25rem;
+	align-items: center;
+	font-weight: 400;
+}
+
+.ripple input:is([type="checkbox"], [type="radio"]) {
+	flex: none;
+	width: 1.25rem;
+	height: 1.25rem;
+	margin: 0.15rem 0 0;
+	accent-color: var(--rp-brand);
+}
+
+.rp-tabs,
+.rp-views {
+	display: flex;
+	gap: 0.4rem;
+	margin-bottom: 1rem;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.ripple .rp-tab,
+.ripple .rp-view {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	min-height: 2.75rem;
+	padding: 0.45rem 0.9rem;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	background: none;
+	color: var(--rp-quiet);
+	font: inherit;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.ripple .rp-tab-on {
+	background: var(--rp-brand-quiet);
+	border-color: var(--rp-brand-border);
+	color: var(--rp-brand-dark);
+}
+
+.ripple .rp-view {
+	border-radius: 10px;
+	border-color: var(--rp-border);
+	background: var(--rp-card);
+}
+
+.ripple .rp-view-on {
+	border-color: var(--rp-brand);
+	color: var(--rp-brand-dark);
+}
+
+.rp-dot {
+	display: inline-grid;
+	place-items: center;
+	min-width: 1.35rem;
+	height: 1.35rem;
+	padding: 0 0.3rem;
+	border-radius: 999px;
+	background: var(--rp-brand);
+	color: #fff;
+	font-size: 0.75rem;
+	text-decoration: none;
+}
+
+.rp-list,
+.rp-plain {
+	display: grid;
+	gap: 0.6rem;
+	padding: 0;
+	list-style: none;
+}
+
+.rp-plain {
+	padding-left: 1.2rem;
+	list-style: disc;
+}
+
+.rp-list li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.25rem 1rem;
+}
+
+.rp-status {
+	justify-self: start;
+	width: fit-content;
+	padding: 0.15rem 0.6rem;
+	border-radius: 999px;
+	background: #f1eee8;
+	color: var(--rp-quiet);
+	font-size: 0.8rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.rp-status-accepted_by_supporter,
+.rp-status-accepted_by_griever,
+.rp-status-accepted,
+.rp-status-completed {
+	background: var(--rp-brand-quiet);
+	color: var(--rp-brand-dark);
+}
+
+.rp-invite-link {
+	display: grid;
+	gap: 0.5rem;
+	justify-items: start;
+}
+
+.rp-invite-link code {
+	max-width: 100%;
+	padding: 0.5rem 0.7rem;
+	border-radius: 8px;
+	background: #f4f1eb;
+	font-size: 0.8rem;
+	overflow-wrap: anywhere;
+}
+
+.rp-guidance {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.rp-guidance dt {
+	font-weight: 650;
+}
+
+.rp-guidance dd {
+	margin: 0;
+	color: var(--rp-quiet);
+}
+
+.rp-footer {
+	margin-top: 2rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--rp-border);
+	color: var(--rp-quiet);
+	font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+	.ripple {
+		padding: 1.75rem 1.5rem 4rem;
+	}
+	.rp-card {
+		padding: 1.5rem;
+	}
+}
