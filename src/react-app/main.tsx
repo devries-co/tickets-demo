@@ -8,16 +8,19 @@ import Ripple from "./ripple/Ripple.tsx";
 
 // Loaded only when visited: it brings a 3D engine the other pages don't need.
 const NeverForgotten = lazy(() => import("../../Never-Forgotten/app/NeverForgotten.tsx"));
+const UnfinishedConversations = lazy(() => import("../../Unfinished-Conversations/app/UnfinishedConversations.tsx"));
 
 // A handful of pages, so plain path matching is enough; no router needed.
 const path = window.location.pathname.replace(/\/+$/, "");
 const isMissiles = path === "/missiles";
 const isPorchlight = path === "/porchlight" || path.startsWith("/porchlight/");
 const isNeverForgotten = path === "/never-forgotten" || path.startsWith("/never-forgotten/");
+const isUnfinished = path === "/unfinished-conversations" || path.startsWith("/unfinished-conversations/");
 const isRipple = path === "/ripple" || path.startsWith("/ripple/");
 if (isMissiles) document.title = "Missile Command";
 if (isRipple) document.title = "Ripple · MyGriefGuide";
 if (isNeverForgotten) document.title = "Never Forgotten";
+if (isUnfinished) document.title = "Unfinished Conversations";
 if (isPorchlight) {
 	document.title = "Porchlight";
 	document.body.classList.add("porchlight");
@@ -28,6 +31,10 @@ createRoot(document.getElementById("root")!).render(
 		{isNeverForgotten ? (
 			<Suspense fallback={null}>
 				<NeverForgotten />
+			</Suspense>
+		) : isUnfinished ? (
+			<Suspense fallback={null}>
+				<UnfinishedConversations />
 			</Suspense>
 		) : isPorchlight ? (
 			<Porchlight path={path} />

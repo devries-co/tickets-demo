@@ -4,5 +4,5 @@
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo",
 		"types": ["vite/client", "./worker-configuration.d.ts"]
 	},
-	"include": ["src/worker", "porchlight/worker", "Never-Forgotten/worker", "Never-Forgotten/shared"]
+	"include": ["src/worker", "porchlight/worker", "Never-Forgotten/worker", "Never-Forgotten/shared", "Unfinished-Conversations/worker", "Unfinished-Conversations/shared.ts"]
 }

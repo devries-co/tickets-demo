@@ -22,5 +22,5 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true
 	},
-	"include": ["src/react-app", "porchlight/app", "porchlight/shared.ts", "Never-Forgotten/app", "Never-Forgotten/shared"]
+	"include": ["src/react-app", "porchlight/app", "porchlight/shared.ts", "Never-Forgotten/app", "Never-Forgotten/shared", "Unfinished-Conversations/app", "Unfinished-Conversations/shared.ts"]
 }

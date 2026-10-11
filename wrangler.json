@@ -18,6 +18,10 @@
 		{
 			"binding": "NF_DB",
 			"database_name": "never-forgotten"
+		},
+		{
+			"binding": "UC_DB",
+			"database_name": "unfinished-conversations"
 		}
 	],
 	"triggers": {
