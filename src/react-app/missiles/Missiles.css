@@ -1,0 +1,31 @@
+.missiles {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	background: radial-gradient(ellipse at 50% 40%, #12142b 0%, #05060f 70%);
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.missiles canvas {
+	width: min(100vw - 2rem, (100vh - 7rem) * 1.6);
+	aspect-ratio: 960 / 600;
+	border-radius: 10px;
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.12),
+		0 0 60px rgba(120, 140, 255, 0.18),
+		0 20px 60px rgba(0, 0, 0, 0.6);
+	cursor: none;
+	touch-action: none;
+	user-select: none;
+}
+
+.missiles-help {
+	margin: 0;
+	padding: 0 1rem;
+	font-size: 0.8rem;
+	text-align: center;
+}
