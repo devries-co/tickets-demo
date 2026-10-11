@@ -14,6 +14,10 @@
 		{
 			"binding": "DB",
 			"database_name": "ripple"
+		},
+		{
+			"binding": "NF_DB",
+			"database_name": "never-forgotten"
 		}
 	],
 	"triggers": {
@@ -24,7 +28,12 @@
 	},
 	"assets": {
 		"directory": "./dist/client",
-		"not_found_handling": "single-page-application"
+		"not_found_handling": "single-page-application",
+		"binding": "ASSETS",
+		"run_worker_first": [
+			"/api/*",
+			"/never-forgotten/remember/*"
+		]
 	},
 	"durable_objects": {
 		"bindings": [
