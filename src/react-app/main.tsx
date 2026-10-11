@@ -7,6 +7,7 @@ import Porchlight from "../../porchlight/app/Porchlight.tsx";
 import Ripple from "./ripple/Ripple.tsx";
 
 // Loaded only when visited: it brings a 3D engine the other pages don't need.
+const Labs = lazy(() => import("../../Labs/app/Labs.tsx"));
 const NeverForgotten = lazy(() => import("../../Never-Forgotten/app/NeverForgotten.tsx"));
 const UnfinishedConversations = lazy(() => import("../../Unfinished-Conversations/app/UnfinishedConversations.tsx"));
 
@@ -17,6 +18,9 @@ const isPorchlight = path === "/porchlight" || path.startsWith("/porchlight/");
 const isNeverForgotten = path === "/never-forgotten" || path.startsWith("/never-forgotten/");
 const isUnfinished = path === "/unfinished-conversations" || path.startsWith("/unfinished-conversations/");
 const isRipple = path === "/ripple" || path.startsWith("/ripple/");
+// Grief Guide Labs is the front page of labs.mygriefguide.org, and /labs anywhere else.
+const isLabs = path === "/labs" || (path === "" && window.location.hostname.startsWith("labs."));
+if (isLabs) document.title = "Grief Guide Labs";
 if (isMissiles) document.title = "Missile Command";
 if (isRipple) document.title = "Ripple · MyGriefGuide";
 if (isNeverForgotten) document.title = "Never Forgotten";
@@ -28,7 +32,11 @@ if (isPorchlight) {
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		{isNeverForgotten ? (
+		{isLabs ? (
+			<Suspense fallback={null}>
+				<Labs />
+			</Suspense>
+		) : isNeverForgotten ? (
 			<Suspense fallback={null}>
 				<NeverForgotten />
 			</Suspense>

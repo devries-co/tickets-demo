@@ -6,6 +6,13 @@
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
+	"workers_dev": true,
+	"routes": [
+		{
+			"pattern": "labs.mygriefguide.org",
+			"custom_domain": true
+		}
+	],
 	"observability": {
 		"enabled": true
 	},
@@ -22,6 +29,10 @@
 		{
 			"binding": "UC_DB",
 			"database_name": "unfinished-conversations"
+		},
+		{
+			"binding": "LABS_DB",
+			"database_name": "labs"
 		}
 	],
 	"triggers": {
@@ -35,6 +46,8 @@
 		"not_found_handling": "single-page-application",
 		"binding": "ASSETS",
 		"run_worker_first": [
+			"/",
+			"/labs",
 			"/api/*",
 			"/never-forgotten/remember/*"
 		]

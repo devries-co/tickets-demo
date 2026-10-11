@@ -1,0 +1,558 @@
+/* Grief Guide Labs: the teal of the Grief Guide logo on warm paper, serif headings, a lot of air.
+   Everything is scoped under .labs so the other pages' global styles don't leak in. */
+.labs {
+	--lb-teal: #14736b;
+	--lb-deep: #05545c;
+	--lb-night: #063c42;
+	--lb-wash: #e6f1ef;
+	--lb-mist: #bfdcd7;
+	--lb-paper: #faf7f1;
+	--lb-card: #fffdf9;
+	--lb-ink: #22302e;
+	--lb-quiet: #5a6966;
+	--lb-line: #e3dccf;
+	--lb-amber: #f6c56b;
+	--lb-danger: #9a3b2e;
+	--lb-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+	--lb-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+	position: fixed;
+	inset: 0;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+	padding: 0 1.25rem;
+	background:
+		radial-gradient(ellipse 70% 40rem at 50% 0%, #eef5f2 0%, transparent 70%),
+		var(--lb-paper);
+	color: var(--lb-ink);
+	font-family: var(--lb-sans);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	text-align: left;
+	color-scheme: light;
+}
+
+.labs *,
+.labs *::before {
+	box-sizing: border-box;
+}
+
+/* :where keeps this reset weaker than every class rule below it. */
+:where(.labs) :where(h1, h2, p, ul, dl, dd) {
+	margin: 0;
+}
+
+.labs :is(h1, h2) {
+	font-family: var(--lb-serif);
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	text-wrap: balance;
+}
+
+.labs a {
+	color: var(--lb-teal);
+	font-weight: inherit;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}
+.labs a:hover {
+	color: var(--lb-deep);
+}
+
+.labs :is(a, button, input, textarea):focus-visible {
+	outline: 2px solid var(--lb-teal);
+	outline-offset: 3px;
+}
+
+.labs > * {
+	max-width: 66rem;
+	margin-inline: auto;
+}
+
+/* Header */
+.labs-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-block: 1.5rem;
+}
+
+.labs a.labs-mark {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.5rem;
+	color: var(--lb-teal);
+	font-size: 1.35rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	text-decoration: none;
+}
+.labs-mark .labs-wave {
+	width: 2.6rem;
+	align-self: center;
+}
+.labs-mark small {
+	color: var(--lb-deep);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.labs a.labs-home {
+	color: var(--lb-quiet);
+	font-size: 0.9rem;
+	text-decoration: none;
+}
+.labs a.labs-home:hover {
+	color: var(--lb-teal);
+}
+
+.labs-wave {
+	display: block;
+	fill: none;
+	stroke: var(--lb-teal);
+	stroke-width: 2.5;
+	stroke-linecap: round;
+}
+.labs-wave path + path {
+	stroke: var(--lb-deep);
+	opacity: 0.55;
+}
+
+/* Hero */
+.labs-hero {
+	max-width: 46rem;
+	margin-inline: auto;
+	padding-block: clamp(2.5rem, 9vw, 6rem) clamp(2rem, 6vw, 4rem);
+	text-align: center;
+}
+
+.labs-eyebrow,
+.labs-number {
+	color: var(--lb-teal);
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+}
+
+.labs-hero h1 {
+	margin-top: 1.25rem;
+	color: var(--lb-night);
+	font-size: clamp(2.1rem, 6.4vw, 3.6rem);
+	line-height: 1.12;
+}
+
+.labs-lede {
+	max-width: 38rem;
+	margin: 1.5rem auto 0;
+	color: var(--lb-quiet);
+	font-size: clamp(1.06rem, 2.2vw, 1.2rem);
+	text-wrap: pretty;
+}
+
+.labs-index {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5rem 0.6rem;
+	margin-top: 2.25rem;
+}
+.labs .labs-index a {
+	padding: 0.4rem 1rem;
+	border: 1px solid var(--lb-mist);
+	border-radius: 999px;
+	background: var(--lb-card);
+	color: var(--lb-deep);
+	font-size: 0.95rem;
+	text-decoration: none;
+}
+.labs .labs-index a:hover {
+	border-color: var(--lb-teal);
+	background: var(--lb-wash);
+}
+
+/* The "before you look" note */
+.labs-note {
+	max-width: 44rem;
+	margin-inline: auto;
+	padding: 1.25rem 1.5rem;
+	border-left: 3px solid var(--lb-teal);
+	border-radius: 0 0.6rem 0.6rem 0;
+	background: var(--lb-wash);
+}
+.labs-note h2 {
+	font-family: var(--lb-sans);
+	font-size: 0.95rem;
+	font-weight: 650;
+	letter-spacing: 0;
+}
+.labs-note p {
+	margin-top: 0.3rem;
+	font-size: 0.98rem;
+}
+
+/* A concept: drawing on one side, words on the other, alternating down the page */
+.labs-concept {
+	display: grid;
+	gap: 1.75rem;
+	padding-block: clamp(3rem, 8vw, 5.5rem);
+	border-bottom: 1px solid var(--lb-line);
+	scroll-margin-top: 1rem;
+}
+
+.labs-art {
+	overflow: hidden;
+	border-radius: 1.1rem;
+	aspect-ratio: 4 / 3;
+}
+
+.labs-svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.labs-svg--wash {
+	background: radial-gradient(circle at 50% 50%, #f4faf8, var(--lb-wash));
+}
+.labs-svg--deep {
+	background: radial-gradient(circle at 50% 40%, var(--lb-deep), var(--lb-night));
+}
+.labs-svg--paper {
+	background: linear-gradient(160deg, #f3ecdf, #ece3d3);
+}
+
+.labs-svg .ring {
+	fill: none;
+	stroke: var(--lb-teal);
+	stroke-width: 1.5;
+}
+.labs-svg .solid {
+	fill: var(--lb-deep);
+}
+.labs-svg .person {
+	fill: var(--lb-card);
+	stroke: var(--lb-teal);
+	stroke-width: 2;
+}
+.labs-svg .line {
+	fill: none;
+	stroke: var(--lb-mist);
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.labs-svg .lamp {
+	fill: var(--lb-amber);
+}
+.labs-svg .off {
+	fill: none;
+	stroke: var(--lb-mist);
+	stroke-width: 1.5;
+	opacity: 0.6;
+}
+.labs-svg .halo {
+	fill: rgba(191, 220, 215, 0.06);
+	stroke: rgba(191, 220, 215, 0.18);
+}
+.labs-svg .name {
+	fill: var(--lb-mist);
+}
+.labs-svg .found {
+	fill: var(--lb-amber);
+}
+.labs-svg .bar {
+	fill: var(--lb-teal);
+}
+.labs-svg .sheet {
+	fill: var(--lb-card);
+	stroke: #d9cdb8;
+}
+.labs-svg .script {
+	fill: none;
+	stroke: #cfc4b0;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+.labs-svg .sign {
+	fill: none;
+	stroke: var(--lb-teal);
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+
+.labs-words h2 {
+	margin-top: 0.6rem;
+	color: var(--lb-night);
+	font-size: clamp(1.9rem, 4.6vw, 2.6rem);
+	line-height: 1.15;
+}
+
+.labs-promise {
+	margin-top: 0.5rem;
+	color: var(--lb-teal);
+	font-family: var(--lb-serif);
+	font-size: 1.25rem;
+	font-style: italic;
+	line-height: 1.4;
+	text-wrap: balance;
+}
+
+.labs-words > p:not([class]) {
+	margin-top: 1.1rem;
+}
+
+.labs-words ul {
+	display: grid;
+	gap: 0.6rem;
+	margin-top: 1.1rem;
+	padding: 0;
+	list-style: none;
+}
+.labs-words li {
+	position: relative;
+	padding-left: 1.5rem;
+}
+.labs-words li::before {
+	content: "";
+	position: absolute;
+	left: 0.15rem;
+	top: 0.68em;
+	width: 0.5rem;
+	height: 0.5rem;
+	border: 1.5px solid var(--lb-teal);
+	border-radius: 50%;
+}
+
+.labs-who {
+	margin-top: 1.1rem;
+	color: var(--lb-quiet);
+	font-size: 0.97rem;
+}
+
+.labs a.labs-preview {
+	display: inline-block;
+	margin-top: 1.1rem;
+	font-weight: 600;
+}
+
+/* The question under each concept */
+.labs-react {
+	margin-top: 1.75rem;
+	padding: 1.25rem 1.35rem 1.35rem;
+	border: 1px solid var(--lb-line);
+	border-radius: 0.9rem;
+	background: var(--lb-card);
+}
+
+.labs-ask {
+	font-family: var(--lb-serif);
+	font-size: 1.2rem;
+}
+
+.labs-answers {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 0.8rem;
+}
+
+.labs-answer,
+.labs-button {
+	min-height: 2.75rem;
+	padding: 0.5rem 1.15rem;
+	border: 1.5px solid var(--lb-teal);
+	border-radius: 999px;
+	font: inherit;
+	font-size: 0.98rem;
+	font-weight: 550;
+	cursor: pointer;
+	transition:
+		background-color 0.15s,
+		color 0.15s;
+}
+.labs-answer {
+	background: transparent;
+	color: var(--lb-deep);
+}
+.labs-answer:hover {
+	background: var(--lb-wash);
+}
+.labs-answer[aria-pressed="true"],
+.labs-button {
+	background: var(--lb-teal);
+	color: #fff;
+}
+.labs-button:hover:not(:disabled) {
+	border-color: var(--lb-deep);
+	background: var(--lb-deep);
+}
+.labs :is(.labs-answer, .labs-button):disabled {
+	cursor: default;
+	opacity: 0.55;
+}
+
+.labs-noted {
+	color: var(--lb-deep);
+	font-size: 0.98rem;
+}
+.labs-react > .labs-noted {
+	margin-top: 1rem;
+}
+.labs-error {
+	margin-top: 0.75rem;
+	color: var(--lb-danger);
+	font-size: 0.95rem;
+}
+
+.labs-more {
+	display: grid;
+	gap: 0.9rem;
+	justify-items: start;
+	margin-top: 1rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--lb-line);
+}
+.labs-more label {
+	display: grid;
+	gap: 0.35rem;
+	width: 100%;
+	font-size: 0.95rem;
+}
+.labs-more em {
+	margin-left: 0.25rem;
+	color: var(--lb-quiet);
+	font-size: 0.85rem;
+	font-style: normal;
+}
+
+.labs :is(input, textarea) {
+	width: 100%;
+	padding: 0.65rem 0.8rem;
+	border: 1px solid #cfc6b6;
+	border-radius: 0.55rem;
+	background: #fff;
+	color: var(--lb-ink);
+	font: inherit;
+}
+.labs textarea {
+	resize: vertical;
+}
+.labs ::placeholder {
+	color: #8b9794;
+}
+
+/* How we're going about this */
+.labs-promises {
+	padding-block: clamp(3rem, 8vw, 5.5rem);
+}
+.labs-promises h2,
+.labs-close h2 {
+	color: var(--lb-night);
+	font-size: clamp(1.6rem, 4vw, 2.1rem);
+	text-align: center;
+}
+.labs-promises dl {
+	display: grid;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+.labs-promises dl > div {
+	padding: 1.4rem 1.5rem;
+	border-top: 2px solid var(--lb-teal);
+	border-radius: 0 0 0.9rem 0.9rem;
+	background: var(--lb-card);
+}
+.labs-promises dt {
+	font-family: var(--lb-serif);
+	font-size: 1.2rem;
+	line-height: 1.3;
+}
+.labs-promises dd {
+	margin-top: 0.5rem;
+	color: var(--lb-quiet);
+	font-size: 0.98rem;
+}
+
+/* Closing sign-up */
+.labs-close {
+	max-width: 34rem;
+	margin-inline: auto;
+	padding-bottom: clamp(3rem, 8vw, 5rem);
+	text-align: center;
+}
+.labs-close .labs-wave {
+	width: 5rem;
+	margin: 0 auto 1.5rem;
+}
+.labs-close > p {
+	margin-top: 0.75rem;
+	color: var(--lb-quiet);
+}
+.labs-touch {
+	margin-top: 1.5rem;
+	text-align: left;
+}
+.labs-touch label {
+	display: block;
+	margin-bottom: 0.35rem;
+	font-size: 0.95rem;
+}
+.labs-touch > div {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}
+.labs-touch input {
+	flex: 1 1 14rem;
+	width: auto;
+}
+.labs-close > .labs-noted {
+	margin-top: 1.5rem;
+}
+
+.labs-foot {
+	display: grid;
+	gap: 0.4rem;
+	padding-block: 2rem 3rem;
+	border-top: 1px solid var(--lb-line);
+	color: var(--lb-quiet);
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+@media (min-width: 54rem) {
+	.labs {
+		padding-inline: 2.5rem;
+	}
+	.labs-concept {
+		grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+		align-items: start;
+		gap: clamp(2.5rem, 5vw, 4.5rem);
+	}
+	.labs-art {
+		position: sticky;
+		top: 2rem;
+	}
+	.labs-concept:nth-of-type(even) {
+		grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+	}
+	.labs-concept:nth-of-type(even) .labs-art {
+		order: 2;
+	}
+	.labs-promises dl {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.labs {
+		scroll-behavior: auto;
+	}
+	.labs :is(.labs-answer, .labs-button) {
+		transition: none;
+	}
+}
