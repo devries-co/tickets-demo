@@ -3,7 +3,9 @@
 	"name": "tickets-demo",
 	"main": "./src/worker/index.ts",
 	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
 	"observability": {
 		"enabled": true
 	},
@@ -15,10 +17,29 @@
 		}
 	],
 	"triggers": {
-		"crons": ["0 14 * * *"]
+		"crons": [
+			"0 14 * * *",
+			"0 * * * *"
+		]
 	},
 	"assets": {
 		"directory": "./dist/client",
 		"not_found_handling": "single-page-application"
-	}
+	},
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "PORCHLIGHT",
+				"class_name": "PorchlightStore"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": [
+				"PorchlightStore"
+			]
+		}
+	]
 }
