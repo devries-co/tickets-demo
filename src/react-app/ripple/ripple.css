@@ -45,6 +45,11 @@
 	margin: 0;
 }
 
+/* The reset above outranks the centering rule, so re-centre top-level banners and notices. */
+.ripple > p {
+	margin-inline: auto;
+}
+
 .ripple h1 {
 	font-size: clamp(1.6rem, 5vw, 2.1rem);
 	line-height: 1.2;
